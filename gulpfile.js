@@ -22,7 +22,7 @@ const path = {
     SRC: __dirname + '/app/js/',
     DEST: __dirname + '/public/js/',
     OUTPUT: 'bundle.js',
-    ENTRY: 'app.js'
+    ENTRY: 'index.js'
   }
 }
 
@@ -86,7 +86,7 @@ gulp.task('build-js-production', function() {
 
 gulp.task('watch', function() {
   livereload.listen();
-  gulp.watch([path.JS.SRC + '*'], ['build-js'])
+  gulp.watch([path.JS.SRC + '**/*.js'], ['build-js'])
     .on('change', function(event) {
       gutil.log(gutil.colors.magenta(event.path), event.type)
     })

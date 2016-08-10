@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Responsive, WidthProvider } from 'react-grid-layout'
 import Add from './addItem.js'
 import { Button } from 'antd';
@@ -11,12 +10,10 @@ const ResponsiveReactGridLayout = WidthProvider(Responsive);
 class Main extends React.Component {
   render() {
     return (
-      <MuiThemeProvider>
-        <div>
-          <Add />
-          <Grid />
-        </div>
-      </MuiThemeProvider>
+      <div>
+        <Add />
+        <Grid />
+      </div>
     )
   }
 }

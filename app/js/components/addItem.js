@@ -1,64 +1,11 @@
 'use strict';
 
 import React from 'react';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
-import Dialog from 'material-ui/Dialog';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
+import TextFieldContainer from '../containers/TextFieldContainer.js'
+import TextField from './TextField.js'
 import { Select, Modal, Form, Button, Input, Tag, Card } from 'antd';
 
-const Option = Select.Option;
 const FormItem = Form.Item;
-
-class AutoComplete extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      option: this.props.option,
-      choose: ''
-    }
-  }
-  handleChange(value) {
-    var option = this.props.option.filter(function(val) {
-      if(!val)
-        return false;
-      return val.indexOf(value) >= 0 ? true : false;
-    });
-
-    // Due to setState is async func. need callback to make sure the data consistency
-    this.setState({ option: option, choose: value }, function() {
-      console.log(this.state.choose);
-      this.props.notify()
-    });
-  }
-
-  getOptions() {
-    return this.state.option.map(function(val, index) {
-      return <Option key={index} value={val}>{val}</Option>
-    })
-  }
-
-  render() {
-    return (
-      <Select 
-        combobox
-        size="large"
-        style={{ width: this.props.width }}
-        onChange={this.handleChange.bind(this)}
-        filterOption={false}>
-        {this.getOptions()}
-      </Select>
-    )
-  }
-}
-
-AutoComplete.defaultProps = {
-  width: "400px",
-  option: ['https://i.kinja-img.com/gawker-media/image/upload/unnbgkdbmsszmazgxkmr.jpg', '312', '1234566', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-}
 
 class SMCForm extends React.Component {
   constructor(props) {
@@ -85,34 +32,8 @@ class SMCForm extends React.Component {
       <Form form={this.props.form}>
         <FormItem 
           {...formItemLayout}
-          label="Database">
-          <AutoComplete
-            ref="database"
-            notify={this.notify.bind(this)}
-          />
-        </FormItem>
-        <FormItem 
-          {...formItemLayout}
-          label="Category">
-          <AutoComplete 
-            ref="category"
-            notify={this.notify.bind(this)}
-          />
-        </FormItem>
-        <FormItem 
-          {...formItemLayout}
-          label="KPI-1">
-          <AutoComplete
-            ref="kpi1"
-            notify={this.notify.bind(this)}
-          />
-        </FormItem>
-        <FormItem 
-          {...formItemLayout}
           label="KPI-2">
-          <AutoComplete
-            ref="kpi2"
-            notify={this.notify.bind(this)}
+          <TextFieldContainer
           />
         </FormItem>
       </Form>
