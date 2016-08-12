@@ -1,7 +1,6 @@
 'use strict';
 
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { AddCounter, ChangeChoose } from '../actions'
 import TextField from '../components/TextField.js'
 

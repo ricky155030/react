@@ -12,3 +12,10 @@ export const ChangeChoose = function(value) {
     value
   }
 }
+
+export const SetModalVisibility = function(value) {
+  return {
+    type: 'MODAL_VISIBILITY',
+    value
+  }
+}
