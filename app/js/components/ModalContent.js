@@ -21,9 +21,30 @@ class ModalContent extends React.Component {
         <Form form={this.props.form}>
           <FormItem 
             {...formItemLayout}
+            label="Database">
+            <TextFieldContainer 
+              label="database"
+              next="kpi-1"/>
+          </FormItem>
+          <FormItem 
+            {...formItemLayout}
+            label="KPI-1">
+            <TextFieldContainer
+              label="kpi-1"
+              next="kpi-2"/>
+          </FormItem>
+          <FormItem 
+            {...formItemLayout}
             label="KPI-2">
             <TextFieldContainer
-            />
+              label="kpi-2"
+              next="period"/>
+          </FormItem>
+          <FormItem 
+            {...formItemLayout}
+            label="Period">
+            <TextFieldContainer
+              label="period"/>
           </FormItem>
         </Form>
         <Card style={{ width: '100%' }} bodyStyle={{ padding: 0 }}>

@@ -1,0 +1,5 @@
+'use strict';
+
+export const CHANGE_CHOICE = 'CHANGE_CHOICE'
+export const CHANGE_SELECTED = 'CHANGE_SELECTED'
+export const MODAL_VISIBILITY = 'MODAL_VISIBILITY'

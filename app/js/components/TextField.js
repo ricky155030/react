@@ -8,9 +8,6 @@ const Option = Select.Option;
 class TextField extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      option: this.props.option,
-    }
   }
 
   // handleChange(value) {
@@ -28,7 +25,9 @@ class TextField extends React.Component {
   // }
 
   getOptions() {
-    return this.state.option.map(function(val, index) {
+    let options = this.props.choice[this.props.label] || []
+
+    return options.map(function(val, index) {
       return <Option key={index} value={val}>{val}</Option>
     })
   }
@@ -39,8 +38,9 @@ class TextField extends React.Component {
         combobox
         size="large"
         style={{ width: this.props.width }}
-        onChange={this.props.onChange}
-        onClick={this.props.onClick}
+        onSelect={(value, option) => {
+          this.props.onChange(this.props.label, this.props.next, value)
+        }}
         filterOption={false}>
         {this.getOptions()}
       </Select>
@@ -50,7 +50,6 @@ class TextField extends React.Component {
 
 TextField.defaultProps = {
   width: "400px",
-  option: ['https://i.kinja-img.com/gawker-media/image/upload/unnbgkdbmsszmazgxkmr.jpg', '312', '1234566', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 }
 
 export default TextField

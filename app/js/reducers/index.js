@@ -1,11 +1,12 @@
 'use strict';
 
 import { combineReducers } from 'redux'
-import { counter, choose } from './TextFieldReducer'
-import { visibility } from './modal'
+import { visibility, choice, selected } from './modal'
 
 const Modal = combineReducers({
-  visibility
+  visibility,
+  choice,
+  selected
 })
 
 const MyReducer = combineReducers({
