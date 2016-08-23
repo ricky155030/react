@@ -12,8 +12,7 @@ const path = {
   CSS: {
     FILES: [
       'node_modules/react-grid-layout/css/styles.css',
-      'node_modules/react-resizable/css/styles.css',
-      'node_modules/antd/dist/antd.css'
+      'node_modules/react-resizable/css/styles.css'
     ],
     SRC: __dirname + '/app/css/',
     DEST: __dirname + '/public/css/'
@@ -86,7 +85,7 @@ gulp.task('build-js-production', function() {
 
 gulp.task('watch', function() {
   livereload.listen();
-  gulp.watch([path.JS.SRC + '**/*.js'], ['build-js'])
+  gulp.watch([path.JS.SRC + '**/*'], ['build-js'])
     .on('change', function(event) {
       gutil.log(gutil.colors.magenta(event.path), event.type)
     })
