@@ -1,20 +1,12 @@
-/**
- * This file provided by Facebook is for non-commercial testing and evaluation
- * purposes only. Facebook reserves all rights not expressly granted.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * FACEBOOK BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
- * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
-
 var fs = require('fs');
 var path = require('path');
 var express = require('express');
+var multer = require('multer');
+var format = require('util').format;
 var bodyParser = require('body-parser');
+
 var app = express();
+var upload = multer({ dest: '/tmp' })
 
 var COMMENTS_FILE = path.join(__dirname, 'comments.json');
 
@@ -24,41 +16,22 @@ app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.get('/data', function(req, res) {
-  const result = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e"
-  ]
-
-  res.json(result)
+app.post('/upload', upload.single('image'), function(req, res) {
+  res.send(req.file)
 })
 
-app.get('/data/a', function(req, res) {
-  const result = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e"
-  ]
-
-  res.json(result)
+app.get('/image/:filename', function(req, res) {
+  res.sendFile('/tmp/' + req.params.filename, {
+    headers: {
+      'content-type': 'image'
+    }
+  })
 })
 
-app.get('/data/a/a', function(req, res) {
-  const result = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e"
-  ]
-
-  res.json(result)
-})
+// app.post('/upload', function(req, res) {
+//   console.log(req.body)
+//   res.send(req.body)
+// })
 
 app.listen(app.get('port'), function() {
   console.log('Server started: http://localhost:' + app.get('port') + '/');

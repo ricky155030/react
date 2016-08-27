@@ -8,7 +8,6 @@ import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import Main from './components/main.js';
 import MyReducer from './reducers'
-import { fetchKPIData } from './actions'
 
 const logger = createLogger()
 const createStoreMiddleware = applyMiddleware(
@@ -17,8 +16,6 @@ const createStoreMiddleware = applyMiddleware(
 )(createStore)
 
 const store = createStoreMiddleware(MyReducer)
-
-store.dispatch(fetchKPIData('database', 'data'))
 
 render(
   <Provider store={store}>

@@ -22,20 +22,3 @@ export const SetModalVisibility = function(value) {
     value
   }
 }
-
-export const fetchKPIData = function(nextLabel, path) {
-  return dispatch => {
-    let result = {}
-    if(nextLabel) {
-      fetch('http://localhost:3000/' + path)
-        .then( response => response.json() )
-        .then( data => {
-          result[nextLabel] = data
-          dispatch(ChangeChoice(result))
-        })
-        .catch(err => { throw err; })
-    } else {
-      dispatch(ChangeChoice(result))
-    }
-  }
-}

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { red300 } from 'material-ui/styles/colors';
 import { Responsive, WidthProvider } from 'react-grid-layout'
 
 const RWDGrid = WidthProvider(Responsive);
@@ -18,6 +19,10 @@ class Main extends React.Component {
       <MuiThemeProvider>
         <div>
           <Navigator />
+          <div
+            style={{ width: '100%', height: '300px', backgroundColor: red300 }}
+          >
+          </div>
           <Content />
         </div>
       </MuiThemeProvider>

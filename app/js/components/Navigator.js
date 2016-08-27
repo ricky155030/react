@@ -5,8 +5,10 @@ import AppBar from 'material-ui/AppBar';
 import FontIcon from 'material-ui/FontIcon';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
-import Dialog from 'material-ui/Dialog';
 import IconButton from 'material-ui/IconButton/IconButton';
+import IconInfo from 'material-ui/svg-icons/action/info';
+import IconSettings from 'material-ui/svg-icons/action/settings';
+import { red300 } from 'material-ui/styles/colors';
 
 const menuItemStyle = {
   fontSize: '14px',
@@ -16,36 +18,9 @@ const menuItemStyle = {
 
 const elementRight = (
   <div>
-    <IconMenu
-      iconButtonElement={
-        <FontIcon 
-          className="material-icons" 
-          style={{ cursor: 'pointer', color: 'white' }}
-        >
-          settings
-        </FontIcon>
-      }        
-      anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-      targetOrigin={{horizontal: 'left', vertical: 'top'}}
-      style={{ marginRight: '20px' }}
-    >
-      <MenuItem style={menuItemStyle} innerDivStyle={{ padding: '0px 10px' }} primaryText="New template" />
-      <MenuItem style={menuItemStyle} innerDivStyle={{ padding: '0px 10px' }} primaryText="Modify template" />
-    </IconMenu>
-    <FontIcon 
-      className="material-icons" 
-      style={{ cursor: 'pointer', color: 'white' }}
-    >
-      info
-    </FontIcon>
+    <IconSettings color="#FFF" style={{ marginRight: '20px' }} />
+    <IconInfo color="#FFF" />
   </div>
-)
-
-const info = (
-  <Dialog
-  >
-    Discard draft?
-  </Dialog>   
 )
 
 class Navigator extends React.Component {
@@ -58,7 +33,7 @@ class Navigator extends React.Component {
       <AppBar
         title="SOP Generator"
         showMenuIconButton={false}
-        style={{ height: '50px', lineHeight: '50px' }}
+        style={{ height: '50px', lineHeight: '50px', backgroundColor: red300, boxShadow: 'none' }}
         titleStyle={{ fontSize: '20px', lineHeight: '50px', fontWeight: 300 }}
         iconElementRight={elementRight}
         iconStyleRight={{ marginTop: '6px', marginRight: '0' }}

@@ -35,14 +35,8 @@ const webpack_config = {
   },
   module: {
     loaders: [
-      {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015', 'react'],
-        }
-      }
+      { test: /\.js$/, exclude: /(node_modules|bower_components)/, loader: 'babel-loader', query: { presets: ['es2015', 'react'] }},
+      { test: /\.json$/, loader: 'json' } 
     ],
     plugins: [["babel-plugin-antd", {style: "css"}]]
   }
