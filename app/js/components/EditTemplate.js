@@ -3,7 +3,7 @@
 import React from 'react';
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
 import { Card, CardText } from 'material-ui/Card';
-import { grey600 } from 'material-ui/styles/colors';
+import { grey500 } from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
 import { Tab, Tabs } from 'material-ui/Tabs';
 import ReactMarkdown from 'react-markdown';
@@ -15,7 +15,8 @@ class EditTemplate extends React.Component {
     super(props) 
     console.log(this.props)
     this.state = {
-      textareaVal: ''
+      textareaVal: '',
+      id: -1
     }
   }
 
@@ -25,7 +26,7 @@ class EditTemplate extends React.Component {
       return this.confirmRouteLeave()
     })
     this.setState({
-      textareaVal: this.props.routeParams.id
+      id: this.props.routeParams.id
     })
   }
 
@@ -35,7 +36,7 @@ class EditTemplate extends React.Component {
   
   uploadImage(image) {
     let data = new FormData()
-    data.append('image', image, 'hello.png')
+    data.append('image', image, 'undefined.png')
 
     return fetch('http://localhost:3000/api/upload', {
                method: 'POST',
@@ -68,13 +69,13 @@ class EditTemplate extends React.Component {
         <Toolbar>
           <ToolbarGroup>
             <ToolbarTitle
-              text="Add a template"
+              text={"Edit SOP - " + this.state.id}
             />
           </ToolbarGroup>
         </Toolbar>
         <CardText>
           <Tabs
-            tabItemContainerStyle={{ backgroundColor: grey600 }}
+            tabItemContainerStyle={{ backgroundColor: grey500 }}
             inkBarStyle={{ backgroundColor: '#FFF', marginTop: '-5px' }}
           >
             <Tab 

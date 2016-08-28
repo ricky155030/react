@@ -12,6 +12,7 @@ import IconClose from 'material-ui/svg-icons/navigation/close';
 import IconDelete from 'material-ui/svg-icons/action/delete';
 import IconEdit from 'material-ui/svg-icons/editor/mode-edit';
 import { Table, Th, Tr, Td, Tbody, Thead, unsafe } from 'reactable'
+import { grey500 } from 'material-ui/styles/colors';
 
 class SOPList extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class SOPList extends React.Component {
           key={item.id}
           data-sopid={item.id}
           onClick={() => {
-            console.log('Go to SOP No.' + item.id)
+            this.props.router.push('/view/' + item.id);
           }}
         >
           <Td column="name">
@@ -56,18 +57,21 @@ class SOPList extends React.Component {
               <IconButton
                 onClick={(e) => {
                   e.stopPropagation()
-                  this.props.router.push('edit/' + item.id);
+                  this.props.router.push('/edit/' + item.id);
                 }}
               >
-                <IconEdit />
+                <IconEdit color={grey500} />
               </IconButton>
               <IconButton
                 onClick={(e) => {
                   e.stopPropagation()
-                  console.log('Delete SOP No.' + item.id)
+                  if(confirm("確定刪除?")) {
+                    console.log('Delete SOP No.' + item.id)
+                    this.props.router.push('/list');
+                  }
                 }}
               >
-                <IconDelete />
+                <IconDelete color={grey500} />
               </IconButton>
             </div>
           </Td>
