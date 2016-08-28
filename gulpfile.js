@@ -36,7 +36,8 @@ const webpack_config = {
   module: {
     loaders: [
       { test: /\.js$/, exclude: /(node_modules|bower_components)/, loader: 'babel-loader', query: { presets: ['es2015', 'react'] }},
-      { test: /\.json$/, loader: 'json' } 
+      { test: /\.json$/, loader: 'json' },
+      { test: /\.css$/, loader: 'style!css?modules', include: /flexboxgrid/ }
     ],
     plugins: [["babel-plugin-antd", {style: "css"}]]
   }

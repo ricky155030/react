@@ -31,10 +31,10 @@ class Navigator extends React.Component {
   render() {
     return (
       <AppBar
-        title="SOP Generator"
+        title="TiCC"
         showMenuIconButton={false}
-        style={{ height: '50px', lineHeight: '50px', backgroundColor: red300, boxShadow: 'none' }}
-        titleStyle={{ fontSize: '20px', lineHeight: '50px', fontWeight: 300 }}
+        style={{ height: '800px', lineHeight: '50px', backgroundImage: "url('http://blackrockdigital.github.io/startbootstrap-landing-page/img/intro-bg.jpg')", boxShadow: 'none', zIndex: -1 }}
+        titleStyle={{ fontSize: '20px', height: '50px', lineHeight: '50px', fontWeight: 300 }}
         iconElementRight={elementRight}
         iconStyleRight={{ marginTop: '6px', marginRight: '0' }}
       >
